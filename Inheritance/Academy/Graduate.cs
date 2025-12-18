@@ -29,6 +29,12 @@ namespace Academy
 		{
 			Console.WriteLine($"GDestructor:{GetHashCode()}");
 		}
+		public override Human Init(string[] values)
+		{
+			base.Init(values);
+			Subject = values[8];
+			return this;
+		}
 		public override void Info()
 		{
 			base.Info();

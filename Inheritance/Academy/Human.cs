@@ -29,7 +29,13 @@ namespace Academy
 		{
 			Console.WriteLine($"HDestructor:\t{GetHashCode()}");
 		}
-
+		public virtual Human Init(string[] values)
+		{
+			LastName	= values[1];
+			FirstName	= values[2];
+			Age			= Convert.ToInt32(values[3]);
+			return this;
+		}
 		public virtual void Info()
 		{
 			Console.WriteLine($"{LastName} {FirstName} {Age}");

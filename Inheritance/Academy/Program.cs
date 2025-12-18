@@ -70,6 +70,7 @@ namespace Academy
 #endif
 
 			Human[] group = Load("P_421.csv");
+			Print(group);
 			Console.WriteLine("End");
 		}
 		static void Print(Human[] group)
@@ -103,6 +104,7 @@ namespace Academy
 			//2) Выполняем запись в поток:
 			for (int i = 0; i < group.Length; i++)
 			{
+				//Сериализация объекта - помещение всех свойств объекта в один поток данных, в нашем случае в строку.
 				writer.WriteLine(group[i].ToFileString() + ";");    //Все что записывается в поток, попадает в фай этого потока
 			}
 
@@ -119,13 +121,16 @@ namespace Academy
 				Directory.SetCurrentDirectory("..\\..");
 				Console.WriteLine(Directory.GetCurrentDirectory());
 				StreamReader reader = new StreamReader(filename);
+				Factory factory = new Factory();
 				while (!reader.EndOfStream)
 				{
 					string line = reader.ReadLine();
 					//Console.WriteLine(line);
-					String[] strings = line.Split(":,;".ToCharArray());
-					for (int i = 0; i < strings.Length; i++) Console.Write($"{strings[i]}\t");
-					Console.WriteLine();
+					String[] values = line.Split(":,;".ToCharArray());
+					//for (int i = 0; i < values.Length; i++) Console.Write($"{values[i]}\t");Console.WriteLine();
+					//Десериализация - превращение сплошного потока данных, например строки в объект.
+					//Factory - это порождающий паттерн проектирования, который создает требуемый объект, и возвращает его.
+					group.Add(factory.Create(values[0]).Init(values));
 				}
 				reader.Close();
 			}

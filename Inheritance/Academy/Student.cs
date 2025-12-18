@@ -46,6 +46,14 @@ namespace Academy
 		{
 			Console.WriteLine($"SDestructor:\t{GetHashCode()}");
 		}
+		public override Human Init(string[] values)
+		{
+			base.Init(values);
+			Group = values[5];
+			Rating = Convert.ToDouble(values[6]);
+			Attendance = Convert.ToDouble(values[7]);
+			return this;
+		}
 		public override void Info()
 		{
 			base.Info();
