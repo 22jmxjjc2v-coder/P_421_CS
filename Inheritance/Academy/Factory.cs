@@ -8,7 +8,7 @@ namespace Academy
 {
 	class Factory
 	{
-		public Human Create(string type)
+		public static Human Create(string type)
 		{
 			Human human = null;
 			switch (type)
