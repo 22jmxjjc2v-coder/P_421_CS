@@ -11,49 +11,49 @@
     <Position X="5.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GroundVehicle.cs</FileName>
+      <FileName>GroundVehicles\GroundVehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AbstractBaseClass.OnRails" Collapsed="true">
     <Position X="1.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>OnRails.cs</FileName>
+      <FileName>GroundVehicles\OnRails.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AbstractBaseClass.Tramvai" Collapsed="true">
     <Position X="0.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Tramvai.cs</FileName>
+      <FileName>GroundVehicles\Tramvai.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AbstractBaseClass.Train" Collapsed="true">
     <Position X="2.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Train.cs</FileName>
+      <FileName>GroundVehicles\Train.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AbstractBaseClass.OnRoad" Collapsed="true">
     <Position X="5.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>OnRoad.cs</FileName>
+      <FileName>GroundVehicles\OnRoad.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AbstractBaseClass.Bike" Collapsed="true">
     <Position X="4.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Bike.cs</FileName>
+      <FileName>GroundVehicles\Bike.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AbstractBaseClass.Car" Collapsed="true">
     <Position X="6.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Car.cs</FileName>
+      <FileName>GroundVehicles\Car.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AbstractBaseClass.AirVehicle" Collapsed="true">
