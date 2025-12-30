@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Geometry
 {
-	class Rectangle : Shape
+	class Rectangle : Shape, IHaveDiagonal
 	{
 		float width;
 		float height;
@@ -28,6 +28,9 @@ namespace Geometry
 			this.Width = width;
 			this.Height = height;
 		}
+		public double GetDiagonal() => Math.Sqrt(Math.Pow(Width, 2) + Math.Pow(Height, 2));
+		public void DrawDiagonal(PaintEventArgs e) =>
+			e.Graphics.DrawLine(new Pen(Color, 1), StartX, StartY, StartX + Width, StartY + Height);
 		public override double GetArea() => Width * Height;
 		public override double GetPerimeter() => (Width + Height) * 2;
 		public override void Draw(PaintEventArgs e)
@@ -39,7 +42,9 @@ namespace Geometry
 		{
 			Console.WriteLine($"Ширина прямоугольника:\t{Width}");
 			Console.WriteLine($"Высота прямоугольника:\t{Height}");
+			Console.WriteLine($"Диагональ:\t\t{GetDiagonal()}");
 			base.Info(e);
+			DrawDiagonal(e);
 		}
 	}
 	class Square : Rectangle
