@@ -1,4 +1,5 @@
 ﻿#include<iostream>
+#include<ctime>
 using namespace std;
 using std::cin;
 using std::cout;
@@ -17,12 +18,18 @@ public:
 		this->Data = Data;
 		this->pNext = pNext;
 		count++;
+#ifdef DEBUG
 		cout << "EConstructor:\t" << this << endl;
+#endif // DEBUG
+
 	}
 	~Element()
 	{
 		count--;
+#ifdef DEBUG
 		cout << "EDestructor:\t" << this << endl;
+#endif // DEBUG
+
 	}
 	friend class ForwardList;	//Приватные поля будут открытыми для класса 'ForwardList'
 };
@@ -41,7 +48,7 @@ public:
 		size = 0;
 		cout << "LConstructor:\t" << this << endl;
 	}
-	ForwardList(const ForwardList& other)
+	ForwardList(const ForwardList& other):ForwardList()
 	{
 		//this  - этот список
 		//other - тот список
@@ -56,8 +63,8 @@ public:
 		//Condition - условие продолжения или завершения цикла, отабатывает перед каждой итерацией;
 		//Expression - увеличивает счетчик или итератор, отрабатывает после каждой итерации;
 		//			int i = 0		;	i < n;		i++
-		for (Element* Temp = other.Head; Temp; Temp = Temp->pNext)
-			push_back(Temp->Data);
+		//for (Element* Temp = other.Head; Temp; Temp = Temp->pNext)push_back(Temp->Data);
+		*this = other;
 		cout << "CopyConstructor:\t" << this << endl;
 	}
 	~ForwardList()
@@ -70,7 +77,8 @@ public:
 	ForwardList& operator=(const ForwardList& other)
 	{
 		while (Head)pop_front();
-		for (Element* Temp = other.Head; Temp; Temp = Temp->pNext)push_back(Temp->Data);
+		for (Element* Temp = other.Head; Temp; Temp = Temp->pNext)push_front(Temp->Data);
+		reverse();
 		cout << "CopyAssignment:\t" << this << endl;
 		return *this;
 	}
@@ -155,6 +163,17 @@ public:
 	}
 
 	//					Methods:
+	void reverse()
+	{
+		ForwardList buffer;
+		while (Head)
+		{
+			buffer.push_front(Head->Data);
+			pop_front();
+		}
+		Head = buffer.Head;
+		buffer.Head = nullptr;
+	}
 	void print()const
 	{
 		Element* Temp = Head;	//Temp - это итератор.
@@ -170,7 +189,8 @@ public:
 	}
 };
 
-#define BASE_CHECK
+//#define BASE_CHECK
+//#define COPY_METHODS_CHECK
 //#define MULTIPLE_LISTS
 
 void main()
@@ -180,13 +200,16 @@ void main()
 #ifdef BASE_CHECK
 	int n;
 	cout << "Введите размер списка: "; cin >> n;
+	clock_t start = clock();	//Функция clock() возвращает количество тактов
 	ForwardList list;
 	for (int i = 0; i < n; i++)
 	{
-		list.push_back(rand() % 100);
-		//list.push_front(rand() % 100);
+		//list.push_back(rand() % 100);
+		list.push_front(rand() % 100);
 	}
+	clock_t end = clock();
 	list.print();
+	cout << "Список создан за " << double(end - start) / CLOCKS_PER_SEC << "сек." << endl;
 	//list.push_back(123);
 	//list.pop_front();
 	//list.pop_back();
@@ -200,10 +223,16 @@ void main()
 	list.print();*/
 #endif // BASE_CHECK
 
-	//ForwardList list2 = list;	//Copy constructor - Deep copy (Побитовое копирование)
-	ForwardList list2;
-	list2 = list;	//CopyAssignment - Оператор присваивания
+#ifdef COPY_METHODS_CHECK
+	system("PAUSE");
+	start = clock();
+	ForwardList list2 = list;	//Copy constructor - Deep copy (Побитовое копирование)
+	//ForwardList list2;
+	//list2 = list;	//CopyAssignment - Оператор присваивания
+	end = clock();
 	list2.print();
+	cout << "Список скопирован за " << double(end - start) / CLOCKS_PER_SEC << endl;
+#endif // COPY_METHODS_CHECK
 
 #ifdef MULTIPLE_LISTS
 	ForwardList list1;
@@ -220,5 +249,6 @@ void main()
 	list2.push_back(89);
 	list2.print();
 #endif // MULTIPLE_LISTS
+
 
 }
